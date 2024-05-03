@@ -3,15 +3,16 @@ const cors = require("cors");
 require("dotenv").config();
 require("colors");
 const app = express();
-const connect = require("./dbinit");
+const connectDB = require("./dbinit");
 const pokemon = require("./Routes/pokemon");
 
-connect();
+connectDB();
 
 app.use(express.json());
 app.use(cors());
+app.use(express.urlencoded({ extended: true }));
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8000;
 
 app.get("/", (req, res) => {
   res.send("Welcome to my API");
