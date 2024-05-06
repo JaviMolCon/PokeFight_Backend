@@ -5,6 +5,7 @@ require("colors");
 const app = express();
 const connectDB = require("./dbinit");
 const pokemon = require("./Routes/pokemon");
+const winner = require("./Routes/winner");
 
 connectDB();
 
@@ -19,6 +20,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api", pokemon);
+app.use("/api", winner);
+console.log(winner);
 
 app.listen(PORT, () => {
   console.log(`Listening to http://localhost:${PORT}`.rainbow);
